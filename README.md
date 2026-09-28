@@ -2,12 +2,9 @@
 
 Free, interactive hub for Chinese number meanings: decoder, luck checker, lucky number generator, slang dictionary, China area codes, numeric domain scorer, guides, videos, contests — with lead generation, sponsorship, donations and AdSense built in.
 
-**Stack:** static HTML + CSS + vanilla JS. Hosted free on GitHub Pages. No build step needed to serve.
+**Stack:** static HTML + CSS + vanilla JS. Hosted free on GitHub Pages from the `gh-pages` branch. No build step needed to serve.
 
-## How publishing works
-Page sources live in `_src/` (Python 3, no dependencies). On every push to `main`, the GitHub Actions workflow `.github/workflows/build.yml` runs `python3 _src/build.py`, commits the generated HTML to the repo root, and mirrors it to the `gh-pages` branch that GitHub Pages serves.
-
-To build locally: `python3 _src/build.py` (writes HTML into the repo root).
+**Live:** https://webworksa1.github.io/035555-com/
 
 ## Go-live checklist
 All settings live in `assets/js/config.js`:
@@ -18,13 +15,16 @@ All settings live in `assets/js/config.js`:
 4. **Donations** — paste PayPal/Stripe/Buy Me a Coffee/Ko-fi/GitHub Sponsors links into `donate`.
 5. **YouTube** — set `youtubeChannel` and add video IDs to `videos`.
 
-## Custom domain
-1. Add a file named `CNAME` containing `035555.com` to the repo root.
+## Custom domain (035555.com)
+1. Add a file named `CNAME` containing `035555.com` to the root of the `gh-pages` branch.
 2. DNS at the registrar: A records for `@` → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153; CNAME `www` → `webworksa1.github.io`.
 3. Settings → Pages → Custom domain `035555.com` → Enforce HTTPS.
 
-## Editing pages
-Edit copy in `_src/pages_*.py`, shared header/footer in `_src/layout.py`, styles in `assets/css/style.css`, tool logic in `assets/js/app.js`, data in `assets/js/data.js`.
+## Structure
+- `index.html` + tool pages (`decoder`, `lucky-number-checker`, `generator`, `dictionary`, `area-codes`, `numeric-domains`), `guides/`, `videos`, `leads` (lead generation), `support` (donations), `contests`, `careers`, `advertise`, `contact`, `about`, `faq`, `privacy`, `terms`, `disclosure`, `404`.
+- `assets/css/style.css` — design system (light/dark).
+- `assets/js/config.js` — all IDs and links. `data.js` — digits, slang, area codes. `layout.js` — shared footer, sticky CTA, cookie notice, lead popup. `app.js` — tools, forms, ads, videos.
+- `_src/` — optional Python page generator (`python3 _src/build.py` rewrites the HTML from templates).
 
 ## Docs
 - `docs/RESEARCH.md` — meaning of 035555, concept, revenue model, 25-site benchmark, sources.
