@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://035555.com/sitemap.xml
